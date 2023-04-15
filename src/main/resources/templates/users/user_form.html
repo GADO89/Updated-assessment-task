@@ -9,8 +9,8 @@
 <div class="container">
     <h2>User Registration</h2>
     <form th:action="@{/users/save}" method="post" enctype="multipart/form-data" th:object="${user}">
-            <label for="username">username:</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter User name" th:field="*{username}">
+        <label for="username">username:</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter User name" th:field="*{username}">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         <div class="form-group">

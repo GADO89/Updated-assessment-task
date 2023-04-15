@@ -21,21 +21,21 @@ public class UserController {
     //@GetMapping("login")
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public String loginPage(){
-        return "index";
+        return "user/index";
     }
 
     @GetMapping("/users/new")
     public String userRegister(Model model){
         User user= new User();
         model.addAttribute("user",user);
-        return "register.html";
+        return "user/register";
     }
 
     @PostMapping("/image")
     public String upload(Model model){
         User user= new User();
         model.addAttribute("user",user);
-        return "user_form";
+        return "user/user_form";
     }
     @PostMapping("/users/save")
     public String saveUser(User user,
@@ -55,7 +55,7 @@ public class UserController {
             }
         }
         service.save(user);
-        return "image";
+        return "user/image";
     }
 
     @GetMapping("/show")
@@ -63,16 +63,12 @@ public class UserController {
     {
         List<User> products = service.getAllProduct();
         model.addAttribute("products", products);
-        return "display_image";
+        return "user/display_image";
     }
+
 
     /////////////////////////////////////////////////////////////////////////////////////////////
-    @GetMapping("/add")
-    public String showAddProduct()
-    {
 
-        return "redirect:/listProducts";
-    }
 
     @PostMapping("/addP")
     public String saveProduct(@RequestParam("file") MultipartFile file,
@@ -84,12 +80,12 @@ public class UserController {
         return "redirect:/listProducts";
     }
 
-    @GetMapping("/deleteProd/{id}")
+    @GetMapping("/deleteImage")
     public String deleteProduct(@PathVariable("id") Long id)
     {
 
         service.deleteProductById(id);
-        return "redirect:/listProducts.";
+        return "admin/delete_image";
     }
 
     @PostMapping("/changeName")
@@ -109,11 +105,6 @@ public class UserController {
 
 
 }
-
-
-
-
-
 
 /*
 package com.spring.swagger.controller;
